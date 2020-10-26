@@ -1,38 +1,41 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Home } from './Home';
-import { About } from './About';
-import { Service } from './Service';
-import { Product } from './Product';
-import { Contact } from './Contact';
-import { NoMatch } from './NoMatch';
-import { Layout } from './components/Layout';
-import { NavigationBar } from './components/NavigationBar';
-import { Jumbotron } from './components/Jumbotron';
-import { Footer } from './components/Footer';
+import React from 'react';
+import GlobalStyle from './globalStyles';
+import Home from './pages/HomePage/Home';
+import Services from './pages/Services/Services';
+import Samples from './pages/Samples/Samples';
+import Products from './pages/Products/Products';
+import SignUp from './pages/SignUp/SignUp';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
+import { Navbar, Footer } from './components';
 
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Router>
-          <NavigationBar />
-          <Jumbotron />
-          <Layout>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/about' component={About} />
-              <Route path='/service' component={Service} />
-              <Route path='/product' component={Product} />
-              <Route path='/contact' component={Contact} />
-              <Route component={NoMatch} />
-            </Switch>
-          </Layout>
-        </Router>
-        <Footer />
-      </React.Fragment>
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <GlobalStyle />
+      <ScrollToTop />
+      <Navbar />
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/services' component={Services} />
+        <Route path='/samples' component={Samples} />
+        <Route path='/products' component={Products} />
+        <Route path='/sign-up' component={SignUp} />
+      </Switch>
+      <Footer />
+    </Router>
+  );
 }
+/*
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.22.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.22.1/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+*/
 export default App;
